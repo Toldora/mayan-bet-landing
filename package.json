@@ -1,0 +1,25 @@
+{
+  "name": "mayan-bet-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": "Oleksandr Kropivnyi <kropivnyy@gmail.com>",
+  "homepage": "https://Kropivnyy.github.io/vite-project-template",
+  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=/vite-project-template/",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "vite": "^4.5.0",
+    "vite-plugin-handlebars": "^1.6.0",
+    "vite-plugin-html": "^3.2.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "prettier": "^3.0.3"
+  }
+}

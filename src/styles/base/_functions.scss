@@ -1,0 +1,10 @@
+@use 'sass:math';
+
+@function to-rem($px) {
+  $rem-value: math.div($px, 16) + rem;
+  @return $rem-value;
+}
+
+@function hex-to-rgb($color) {
+  @return red($color) + ', ' + green($color) + ', ' + blue($color);
+}

@@ -1,0 +1,98 @@
+@use 'sass:color';
+@import '@/styles/colors';
+
+:root,
+::before,
+::after {
+  // Primary colors
+  --col-total-white: #{$col-total-white};
+  --col-total-white-rgb: #{$col-total-white-rgb};
+  --col-total-black: #{$col-total-black};
+  --col-total-black-rgb: #{$col-total-black-rgb};
+
+  --col-white-min-alpha: rgba(#{$col-total-white-rgb}, 15%);
+
+  --col-primary-accent-main: #{$col-infra-red};
+  --col-primary-accent-main-rgb: #{$col-infra-red-rgb};
+  --col-primary-accent-main-dark: #{color.adjust(
+      $col-infra-red,
+      $lightness: -10%
+    )};
+
+  // Z-indexes
+  --z-app-navbar: 14;
+  --z-default: 1;
+  --z-hidden: -1;
+
+  // Text variables
+  /* stylelint-disable max-line-length */
+  --primary-font-family: 'Outfit', -apple-system, 'BlinkMacSystemFont',
+    'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue',
+    sans-serif;
+  --secondary-font-family: 'Poppins', -apple-system, 'BlinkMacSystemFont',
+    'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue',
+    sans-serif;
+  --title-font-family: 'Oswald', -apple-system, 'BlinkMacSystemFont', 'Segoe UI',
+    'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+  /* stylelint-enable max-line-length */
+
+  --p-size: #{to-rem(16)};
+  --h2-size: #{to-rem(42)};
+  --h3-size: #{to-rem(26)};
+
+  @include respond-above(medium) {
+    --p-size: #{to-rem(18)};
+    --h2-size: #{clamp(to-rem(56), 8.2svh, to-rem(90))};
+    --h3-size: #{clamp(to-rem(30), 4.6svh, to-rem(50))};
+  }
+
+  // Transitions
+  --fast-transition-duration: 0.2s;
+  --medium-transition-duration: 0.3s;
+  --slow-transition-duration: 0.4s;
+  --hover-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --slide-transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  --fade-transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --hover-transition: var(--fast-transition-duration)
+    var(--hover-transition-timing-function);
+  --slide-transition: var(--medium-transition-duration)
+    var(--slide-transition-timing-function);
+
+  // Base
+  --container-max-width: 100%;
+  --container-side-padding: #{to-rem(20)};
+  --primary-text-color: var(--col-total-white);
+
+  @include respond-above(medium) {
+    --container-max-width: #{to-rem(1100)};
+    --container-side-padding: #{to-rem(40)};
+  }
+
+  @include respond-above(xmedium) {
+    --container-max-width: #{to-rem(1180)};
+  }
+
+  @include respond-above(large) {
+    --container-max-width: #{to-rem(1320)};
+    --container-side-padding: #{to-rem(56)};
+  }
+
+  // Common
+  --scrollbar-color: var(--primary-text-color);
+
+  // App navbar
+  --app-navbar-height: #{clamp(to-rem(90), 13svh, to-rem(133))};
+
+  // Home page
+  --home-page-bg-gradient: linear-gradient(
+    91deg,
+    rgba(#{$col-total-black-rgb}, 25%) 25%,
+    rgba(#{$col-total-black-rgb}, 0%) 82.23%
+  );
+  --home-page-movies-list-border-color: rgba(#{$col-total-white-rgb}, 14%);
+  --home-page-movies-list-bg: rgba(#{$col-eventide-rgb}, 34%);
+  --home-page-active-movie-border-color: rgba(#{$col-infra-red-rgb}, 50%);
+
+  // Rating icon
+  --rating-icon-color: #{$col-forsythia};
+}
