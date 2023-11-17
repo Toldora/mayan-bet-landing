@@ -1,7 +1,9 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import * as path from 'path';
+import { URL, fileURLToPath } from 'url';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -18,12 +20,16 @@ export default defineConfig(({ mode }) => {
       : {}),
     plugins: [
       handlebars({
-        partialDirectory: resolve(__dirname, 'src/partials'),
+        partialDirectory: path.resolve(__dirname, 'src/partials'),
       }),
       createHtmlPlugin({
         minify: true,
         entry: '/src/main.js',
         template: '/index.html',
+      }),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(__dirname, 'src/icons')],
+        symbolId: '[name]',
       }),
     ],
     css: {
@@ -36,6 +42,11 @@ export default defineConfig(({ mode }) => {
           @import "src/styles/base/_media.scss";
         `,
         },
+      },
+    },
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
   };

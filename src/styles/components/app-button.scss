@@ -1,0 +1,25 @@
+.app-button {
+  min-height: to-rem(40);
+  padding: 0 to-rem(30);
+  background-color: var(--col-tibetan-yellow);
+  color: var(--col-dark-tone-ink);
+  box-shadow: none;
+  border-radius: to-rem(5);
+  font-size: to-rem(18);
+  line-height: 1.3;
+  font-weight: 700;
+  transition: background-color var(--hover-transition);
+
+  &--disabled,
+  &:disabled {
+    background-color: var(--col-nuclear-fallou);
+    cursor: default;
+  }
+
+  @include hover {
+    &:not(:disabled),
+    &:not(.app-button--disabled) {
+      background-color: var(--col-total-white);
+    }
+  }
+}

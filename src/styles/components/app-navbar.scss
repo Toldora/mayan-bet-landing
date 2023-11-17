@@ -1,0 +1,48 @@
+.app-navbar {
+  position: relative;
+  z-index: var(--z-app-navbar);
+  height: var(--app-navbar-height);
+  width: 100%;
+  background-color: var(--col-dark-tone-ink);
+}
+
+.app-navbar__container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: to-rem(16);
+
+  @include respond-above(tablet) {
+    font-size: to-rem(18);
+  }
+}
+
+.app-navbar__nav-list {
+  display: none;
+
+  @include respond-above(tablet) {
+    display: flex;
+    align-items: center;
+
+    button {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.app-navbar__nav-list-item {
+  transition: color var(--hover-transition);
+
+  &:not(:last-child) {
+    margin-right: to-rem(40);
+  }
+
+  @include hover {
+    color: var(--col-tibetan-yellow);
+  }
+}
+
+.app-navbar__logo-link {
+  flex-shrink: 0;
+}
