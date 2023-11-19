@@ -24,22 +24,21 @@
   @include respond-above(tablet) {
     display: flex;
     align-items: center;
-
-    button {
-      text-transform: uppercase;
-    }
   }
 }
 
 .app-navbar__nav-list-item {
-  transition: color var(--hover-transition);
-
   &:not(:last-child) {
     margin-right: to-rem(40);
   }
 
-  @include hover {
-    color: var(--col-tibetan-yellow);
+  button {
+    text-transform: uppercase;
+    transition: color var(--hover-transition);
+
+    @include hover {
+      color: var(--col-tibetan-yellow);
+    }
   }
 }
 
