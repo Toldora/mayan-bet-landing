@@ -2,8 +2,12 @@ import { defineConfig, loadEnv } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import * as fs from 'fs';
 import * as path from 'path';
-import { URL, fileURLToPath } from 'url';
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relative => path.resolve(appDirectory, relative);
+const root = path.resolve(__dirname, resolveApp('src'));
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -46,7 +50,8 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@': `${root}/`,
+        '@static': `${root}/../static`,
       },
     },
   };
