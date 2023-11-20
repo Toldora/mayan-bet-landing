@@ -137,20 +137,5 @@ a {
 .app {
   width: 100%;
   height: vh(100);
-  min-height: to-rem(600);
-}
-
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100% - var(--app-navbar-height));
-  background-image: url('/img/bg-large.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  @supports (background-image: url('/img/bg-large.webp')) {
-    background-image: url('/img/bg-large.webp');
-  }
+  // min-height: to-rem(600);
 }

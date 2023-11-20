@@ -25,7 +25,7 @@
 }
 
 .wheel {
-  --wheel-size: 500px;
+  --wheel-size: min(78vmin, #{to-rem(580)});
 
   position: relative;
   width: var(--wheel-size);
