@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 
   @supports (background-image: url('/img/bg-large.webp')) {
     background-image: url('/img/bg-large.webp');
@@ -15,6 +16,7 @@
 }
 
 .main__container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

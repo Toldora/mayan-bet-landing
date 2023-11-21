@@ -1,24 +1,59 @@
 const wheelRef = document.querySelector('.js-wheel');
+const bonusesSectionRef = document.querySelector('.js-bonuses-section');
+const bonusTriesRef = document.querySelector('.js-bonus-tries');
 // const wheelMainPartRef = wheelRef.querySelector('.js-wheel-main-part');
 
 const state = {
-  wheelsCount: 0,
+  stage: 1,
   isSpinning: false,
 };
 
 const onClickWheel = () => {
+  console.log(state.stage);
   if (state.isSpinning) return;
 
-  wheelRef.classList.add(
-    state.wheelsCount ? 'wheel--spinning-2' : 'wheel--spinning-1',
-  );
-
   state.isSpinning = true;
-  state.wheelsCount += 1;
+
+  switch (state.stage) {
+    case 1:
+      wheelRef.classList.add('wheel--spinning-1');
+      break;
+
+    case 2:
+      wheelRef.classList.add('wheel--spinning-2');
+      break;
+
+    default:
+      break;
+  }
 
   setTimeout(() => {
-    wheelRef.classList.remove('wheel--spinning-2', 'wheel--spinning-1');
+    switch (state.stage) {
+      case 1:
+        wheelRef.classList.add('wheel--stage-2');
+        wheelRef.classList.remove('wheel--stage-1');
+        wheelRef.classList.remove('wheel--spinning-1');
+        bonusesSectionRef.classList.add('bonuses-section--visible');
+
+        break;
+
+      case 2:
+        wheelRef.classList.add('wheel--stage-3');
+        wheelRef.classList.remove('wheel--stage-2');
+        wheelRef.classList.remove('wheel--spinning-2');
+        bonusesSectionRef.classList.add(
+          'bonuses-section--visible-second-bonus',
+        );
+        bonusTriesRef.textContent = '0';
+
+        break;
+
+      default:
+        break;
+    }
+
     state.isSpinning = false;
+    state.stage += 1;
   }, 4000);
 };
 
