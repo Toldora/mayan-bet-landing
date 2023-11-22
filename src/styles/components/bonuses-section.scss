@@ -8,6 +8,7 @@
   @extend %hidden-block;
 
   position: absolute;
+  z-index: var(--z-default);
   top: 0;
   left: var(--container-side-padding);
   display: flex;

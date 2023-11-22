@@ -9,7 +9,6 @@ const state = {
 };
 
 const onClickWheel = () => {
-  console.log(state.stage);
   if (state.isSpinning) return;
 
   state.isSpinning = true;
