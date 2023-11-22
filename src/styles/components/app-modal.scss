@@ -3,15 +3,15 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: vh(100);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: var(--z-overlay);
-  background-color: rgba(0, 0, 0, 0.88);
+  background-color: var(--app-overlay-bg);
 
   @include respond-above(tablet) {
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(to-rem(4));
   }
 }
 
@@ -20,7 +20,8 @@
 }
 
 .app-modal__overlay--animation {
-  animation: fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: fade-in var(--medium-transition-duration)
+    var(--hover-transition-timing-function) forwards;
 }
 
 @keyframes fade-in {
@@ -39,30 +40,35 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background-color: #28302a;
-  color: #ffffff;
+  background-color: var(--col-kuro-green);
+  color: var(--col-total-white);
   font-family: var(--secondary-font-family);
-  font-size: 14px;
+  font-size: to-rem(14);
   font-weight: 400;
   line-height: 1.3;
 
   @include respond-above(tablet) {
     max-width: to-rem(400);
     height: auto;
-    max-height: 95vh;
+    max-height: vh(95);
+    background-color: var(--col-gordons-green);
     border-radius: to-rem(16);
   }
 }
 
 .app-modal__close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 6px;
+  top: to-rem(22);
+  right: to-rem(22);
+  padding: to-rem(6);
 }
 
 .app-modal__content {
   width: 100%;
   height: 100%;
-  padding: 32px;
+  padding: to-rem(40) to-rem(32);
+
+  @include respond-above(tablet) {
+    padding: to-rem(32);
+  }
 }

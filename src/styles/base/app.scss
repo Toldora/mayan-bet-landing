@@ -97,14 +97,6 @@ h6 {
   word-wrap: break-word;
 }
 
-h2 {
-  font-size: var(--h2-size);
-}
-
-h3 {
-  font-size: var(--h3-size);
-}
-
 b,
 strong {
   font-weight: 700;
@@ -117,12 +109,12 @@ img {
 }
 
 a {
-  display: inline-block;
+  display: inline-flex;
 }
 
 ::placeholder {
   /* stylelint-disable-next-line declaration-no-important */
-  color: var(--primary-text-color) !important;
+  color: var(--col-radiant-silver) !important;
 }
 
 .container {

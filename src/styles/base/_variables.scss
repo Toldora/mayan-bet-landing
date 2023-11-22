@@ -20,6 +20,16 @@
   --col-nuclear-fallout-rgb: #{$col-nuclear-fallout-rgb};
   --col-key-lime: #{$col-key-lime};
   --col-key-lime-rgb: #{$col-key-lime-rgb};
+  --col-gordons-green: #{$col-gordons-green};
+  --col-gordons-green-rgb: #{$col-gordons-green-rgb};
+  --col-kuro-green: #{$col-kuro-green};
+  --col-kuro-green-rgb: #{$col-kuro-green-rgb};
+  --col-rich-olive: #{$col-rich-olive};
+  --col-rich-olive-rgb: #{$col-rich-olive-rgb};
+  --col-vermilion-cinnabar: #{$col-vermilion-cinnabar};
+  --col-vermilion-cinnabar-rgb: #{$col-vermilion-cinnabar-rgb};
+  --col-radiant-silver: #{$col-radiant-silver};
+  --col-radiant-silver-rgb: #{$col-radiant-silver-rgb};
 
   // Z-indexes
   --z-overlay: 14;
@@ -40,14 +50,10 @@
     sans-serif;
   /* stylelint-enable max-line-length */
 
-  --p-size: #{to-rem(16)};
-  --h2-size: #{to-rem(42)};
-  --h3-size: #{to-rem(26)};
+  --p-size: #{to-rem(14)};
 
   @include respond-above(medium) {
     --p-size: #{to-rem(18)};
-    --h2-size: #{clamp(to-rem(56), 8.2svh, to-rem(90))};
-    --h3-size: #{clamp(to-rem(30), 4.6svh, to-rem(50))};
   }
 
   // Transitions
@@ -85,5 +91,12 @@
   --scrollbar-color: var(--primary-text-color);
 
   // App navbar
-  --app-navbar-height: #{clamp(to-rem(80), vh(11.4), to-rem(100))};
+  --app-navbar-height: #{to-rem(70)};
+
+  @include respond-above(tablet) {
+    --app-navbar-height: #{clamp(to-rem(80), vh(11.4), to-rem(100))};
+  }
+
+  // App overlay
+  --app-overlay-bg: rgba(#{$col-total-black-rgb}, 88%);
 }

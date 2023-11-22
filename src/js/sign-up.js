@@ -21,9 +21,9 @@ const validate = () => {
   state.isValid = isValid;
 
   if (isValid) {
-    submitBtn.classList.remove('sign-up__submit-btn--disabled');
+    submitBtn.classList.remove('app-button--disabled');
   } else {
-    submitBtn.classList.add('sign-up__submit-btn--disabled');
+    submitBtn.classList.add('app-button--disabled');
   }
 };
 

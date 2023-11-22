@@ -45,3 +45,21 @@
 .app-navbar__logo-link {
   flex-shrink: 0;
 }
+
+.app-navbar__logo {
+  &--large {
+    display: none;
+
+    @include respond-above(tablet) {
+      display: inline-block;
+    }
+  }
+
+  &--small {
+    display: inline-block;
+
+    @include respond-above(tablet) {
+      display: none;
+    }
+  }
+}
