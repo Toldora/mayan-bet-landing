@@ -14,13 +14,14 @@
   display: inline-block;
   @extend %full-width;
 
-  background-image: url(#{$path + '.png'});
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
 
-  @supports (background-image: url(#{$path + '.webp'})) {
-    background-image: url(#{$path + '.webp'});
+  @include bg-img-webp($path);
+
+  @include high-resolution-screen {
+    @include bg-img-webp('#{$path}@2x');
   }
 }
 
@@ -62,7 +63,7 @@
 }
 
 .wheel__main {
-  @include bg-image('/img/wheel-main');
+  @include bg-image('/img/wheel/wheel-main');
 
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -95,11 +96,11 @@
 }
 
 .wheel__overlay {
-  @include bg-image('/img/wheel-overlay', true);
+  @include bg-image('/img/wheel/wheel-overlay', true);
 }
 
 .wheel__border {
-  @include bg-image('/img/wheel-border', true);
+  @include bg-image('/img/wheel/wheel-border', true);
 }
 
 .wheel__arrow,
@@ -113,13 +114,13 @@
 }
 
 .wheel__arrow {
-  background-image: url('/img/stone-arrow.png');
+  background-image: url('/img/wheel/stone-arrow.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 
-  @supports (background-image: url('/img/stone-arrow.webp')) {
-    background-image: url('/img/stone-arrow.webp');
+  @supports (background-image: url('/img/wheel/stone-arrow.webp')) {
+    background-image: url('/img/wheel/stone-arrow.webp');
   }
 }
 
@@ -127,7 +128,7 @@
   width: 21.5%;
   height: 21.5%;
 
-  @include bg-image('/img/wheel-btn', true);
+  @include bg-image('/img/wheel/wheel-btn', true);
 
   transform-origin: center;
 
@@ -140,7 +141,7 @@
     @extend %full-width;
     opacity: 0;
 
-    @include bg-image('/img/wheel-btn-hover');
+    @include bg-image('/img/wheel/wheel-btn-hover');
     transition: opacity var(--hover-transition),
       transform var(--hover-transition);
   }
