@@ -38,3 +38,21 @@
     }
   }
 }
+
+@mixin high-resolution-screen() {
+  @media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin bg-img-webp($path, $is-png: false) {
+  @if $is-png {
+    background-image: url('#{$path}.png');
+  } @else {
+    background-image: url('#{$path}.jpg');
+  }
+
+  @supports (background-image: url('#{$path}.webp')) {
+    background-image: url('#{$path}.webp');
+  }
+}

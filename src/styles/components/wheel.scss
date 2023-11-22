@@ -31,13 +31,21 @@
 
   position: relative;
   z-index: var(--z-wheel);
-  height: 100%;
-  max-height: to-rem(600);
   aspect-ratio: 1;
   border-radius: 50%;
   filter: drop-shadow(0 to-rem(10) to-rem(50) var(--col-key-lime));
   overflow: hidden;
   cursor: default;
+
+  @media (orientation: landscape) {
+    height: 100%;
+    max-height: to-rem(600);
+  }
+
+  @media (orientation: portrait) {
+    width: 100%;
+    max-width: to-rem(400);
+  }
 
   @include hover {
     &:not(.wheel--stage-3) {

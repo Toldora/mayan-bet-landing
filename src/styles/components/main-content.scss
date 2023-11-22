@@ -4,14 +4,47 @@
   height: calc(100% - var(--app-navbar-height));
   padding-top: to-rem(32);
   padding-bottom: to-rem(32);
-  background-image: url('/img/bg-large.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   overflow: hidden;
 
-  @supports (background-image: url('/img/bg-large.webp')) {
-    background-image: url('/img/bg-large.webp');
+  @include bg-img-webp('/img/bg/small-ver');
+
+  @include high-resolution-screen {
+    @include bg-img-webp('/img/bg/small-ver@2x');
+  }
+
+  @media (orientation: landscape) {
+    @include bg-img-webp('/img/bg/small-hor');
+
+    @include high-resolution-screen {
+      @include bg-img-webp('/img/bg/small-hor@2x');
+    }
+  }
+
+  @include respond-above(tablet) {
+    @include bg-img-webp('/img/bg/tablet');
+
+    @include high-resolution-screen {
+      @include bg-img-webp('/img/bg/tablet@2x');
+    }
+  }
+
+  @include respond-above(xmedium) {
+    @include bg-img-webp('/img/bg/medium');
+
+    @include high-resolution-screen {
+      @include bg-img-webp('/img/bg/medium@2x');
+    }
+  }
+
+  @include respond-above(large) {
+    @include bg-img-webp('/img/bg/large');
+
+    @include high-resolution-screen {
+      @include bg-img-webp('/img/bg/large@2x');
+    }
   }
 }
 
