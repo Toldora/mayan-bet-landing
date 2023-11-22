@@ -41,6 +41,7 @@ button {
   color: inherit;
   outline: transparent;
   cursor: pointer;
+  user-select: none;
 
   /* Corrects font smoothing for webkit */
   -webkit-font-smoothing: inherit;
