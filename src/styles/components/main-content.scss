@@ -1,9 +1,11 @@
 .main {
+  --padding: #{clamp(to-rem(22), vh(3.5), to-rem(32))};
+
   display: flex;
   align-items: stretch;
   height: calc(100% - var(--app-navbar-height));
-  padding-top: to-rem(32);
-  padding-bottom: to-rem(32);
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -49,8 +51,16 @@
 }
 
 .main__container {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  @media (orientation: landscape) {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
 }

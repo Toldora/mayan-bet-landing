@@ -26,26 +26,43 @@
 }
 
 .wheel {
-  // --wheel-size: min(78vmin, #{to-rem(580)});
-  // width: var(--wheel-size);
-  // height: var(--wheel-size);
-
   position: relative;
   z-index: var(--z-wheel);
   aspect-ratio: 1;
+  flex-shrink: 0;
   border-radius: 50%;
   filter: drop-shadow(0 to-rem(10) to-rem(50) var(--col-key-lime));
   overflow: hidden;
   cursor: default;
 
   @media (orientation: landscape) {
-    height: 100%;
-    max-height: to-rem(600);
+    --size: #{min(46vw, vh(74))};
+
+    height: 0;
+    flex-grow: 1;
+    max-width: var(--size);
+    padding-bottom: var(--size);
+
+    @include respond-above(xmedium) {
+      --size: #{min(46vw, vh(66))};
+    }
+
+    @include respond-above(large) {
+      --size: #{min(46vw, vh(76))};
+    }
   }
 
   @media (orientation: portrait) {
     width: 100%;
-    max-width: to-rem(400);
+    max-width: min(90vw, vh(72));
+
+    @include respond-above(small) {
+      max-width: min(82vw, vh(55));
+    }
+
+    @include respond-above(tablet) {
+      max-width: min(85vw, vh(46));
+    }
   }
 
   @include hover {
@@ -63,7 +80,7 @@
 }
 
 .wheel__main {
-  @include bg-image('/img/wheel/wheel-main');
+  @include bg-image('/img/wheel/wheel-main', true);
 
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -149,64 +166,64 @@
 
 @keyframes wheel-shake-1 {
   0% {
-    transform: rotate(4deg);
+    transform: translate(-50%, -50%) rotate(4deg);
   }
 
   50% {
-    transform: rotate(-4deg);
+    transform: translate(-50%, -50%) rotate(-4deg);
   }
 
   100% {
-    transform: rotate(4deg);
+    transform: translate(-50%, -50%) rotate(4deg);
   }
 }
 
 @keyframes wheel-shake-2 {
   0% {
-    transform: rotate(-176deg);
+    transform: translate(-50%, -50%) rotate(-176deg);
   }
 
   50% {
-    transform: rotate(-184deg);
+    transform: translate(-50%, -50%) rotate(-184deg);
   }
 
   100% {
-    transform: rotate(-176deg);
+    transform: translate(-50%, -50%) rotate(-176deg);
   }
 }
 
 @keyframes spinToStageTwo {
   0% {
-    transform: rotate(4deg);
+    transform: translate(-50%, -50%) rotate(4deg);
   }
 
   70% {
-    transform: rotate(1092deg);
+    transform: translate(-50%, -50%) rotate(1092deg);
   }
 
   80% {
-    transform: rotate(1076deg);
+    transform: translate(-50%, -50%) rotate(1076deg);
   }
 
   100% {
-    transform: rotate(1084deg);
+    transform: translate(-50%, -50%) rotate(1084deg);
   }
 }
 
 @keyframes spinToStageThree {
   0% {
-    transform: rotate(1084deg);
+    transform: translate(-50%, -50%) rotate(1084deg);
   }
 
   70% {
-    transform: rotate(2358deg);
+    transform: translate(-50%, -50%) rotate(2358deg);
   }
 
   80% {
-    transform: rotate(2336deg);
+    transform: translate(-50%, -50%) rotate(2336deg);
   }
 
   100% {
-    transform: rotate(2344deg);
+    transform: translate(-50%, -50%) rotate(2344deg);
   }
 }

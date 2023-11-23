@@ -6,13 +6,23 @@
 
 .bonuses-section {
   @extend %hidden-block;
+  white-space: nowrap;
 
-  position: absolute;
-  z-index: var(--z-default);
-  top: 0;
-  left: var(--container-side-padding);
-  display: flex;
-  flex-wrap: wrap;
+  @media (orientation: portrait) {
+    margin-bottom: clamp(to-rem(22), vh(5), to-rem(40));
+  }
+
+  @media (orientation: landscape) {
+    align-self: flex-start;
+    margin-right: to-rem(20);
+  }
+
+  @include respond-above(xmedium) {
+    position: absolute;
+    z-index: var(--z-default);
+    top: 0;
+    left: var(--container-side-padding);
+  }
 
   &--visible {
     visibility: visible;
@@ -24,14 +34,31 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: to-rem(20);
+  justify-content: center;
+  margin-bottom: to-rem(10);
+  font-size: to-rem(20);
+  font-weight: 900;
   text-transform: uppercase;
+
+  @include respond-above(tablet) {
+    justify-content: flex-start;
+    margin-bottom: to-rem(20);
+    font-size: to-rem(26);
+  }
+
+  @include respond-above(large) {
+    font-size: to-rem(32);
+  }
 }
 
 .bonuses-section__title {
-  margin-right: to-rem(20);
-  font-size: to-rem(32);
+  margin-right: to-rem(10);
+  font-size: inherit;
   font-weight: 900;
+
+  @include respond-above(tablet) {
+    margin-right: to-rem(20);
+  }
 }
 
 .bonuses-section__tries {
@@ -44,9 +71,16 @@
   justify-content: center;
   background-color: var(--col-tibetan-yellow);
   border-radius: to-rem(4);
-  font-size: to-rem(32);
-  font-weight: 900;
   color: var(--col-dark-tone-ink);
+}
+
+.bonuses-section__bottom-row {
+  display: flex;
+  justify-content: center;
+
+  @media (orientation: landscape) {
+    justify-content: flex-start;
+  }
 }
 
 .bonuses-section__bonus-wrapper {
@@ -68,6 +102,25 @@
   }
 
   p {
-    margin-bottom: to-rem(15);
+    margin-bottom: to-rem(10);
+    font-size: to-rem(16);
+
+    @include respond-above(tablet) {
+      margin-bottom: to-rem(15);
+      font-size: var(--p-size);
+    }
+  }
+}
+
+.bonuses-section__bonus-img {
+  width: var(--size);
+  height: var(--size);
+
+  @media (orientation: landscape) {
+    --size: #{clamp(to-rem(100), 10.5vw, to-rem(140))};
+  }
+
+  @media (orientation: portrait) {
+    --size: #{clamp(to-rem(76), vh(12.5), to-rem(100))};
   }
 }

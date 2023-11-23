@@ -90,12 +90,12 @@
   margin-left: -#{to-rem(28)};
   width: to-rem(20);
   height: to-rem(20);
-  background-image: url(/img/checkbox.png);
+  background-image: url('/img/checkbox.png');
   background-size: to-rem(20);
 }
 
 .sign-up-modal__check-input:checked + .sign-up-modal__check-box {
-  background-image: url(/img/checkbox-checked.png);
+  background-image: url('/img/checkbox-checked.png');
 }
 
 .sign-up-modal__check-input:focus-visible + .sign-up-modal__check-box {
