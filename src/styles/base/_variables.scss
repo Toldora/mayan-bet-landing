@@ -32,10 +32,11 @@
   --col-radiant-silver-rgb: #{$col-radiant-silver-rgb};
 
   // Z-indexes
-  --z-overlay: 14;
+  --z-modal-overlay: 14;
   --z-modal: 9;
   --z-app-navbar: 7;
   --z-app-sidebar: 4;
+  --z-sidebar-overlay: 2;
   --z-wheel: 2;
   --z-default: 1;
   --z-hidden: -1;

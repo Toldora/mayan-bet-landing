@@ -2,13 +2,17 @@ const appModalRef = document.querySelector('.js-app-modal');
 const closeBtnRef = appModalRef.querySelector('.js-close-modal-btn');
 const modalContentRef = document.querySelector('.js-app-modal-content');
 
+const modalStyles = getComputedStyle(appModalRef);
+
 const state = {
   isOpenedModal: false,
 };
 
 export const openModal = () => {
-  appModalRef.classList.add('app-modal__overlay--animation');
-  appModalRef.classList.remove('app-modal__overlay--hidden');
+  appModalRef.classList.add(
+    'app-modal__overlay--animation',
+    'app-modal__overlay--is-visible',
+  );
 
   appModalRef.addEventListener('click', onClickOverlay);
   closeBtnRef.addEventListener('click', closeModal);
@@ -19,8 +23,9 @@ export const openModal = () => {
 const closeModal = event => {
   event.stopPropagation();
 
-  appModalRef.classList.remove('app-modal__overlay--animation');
-  appModalRef.classList.add('app-modal__overlay--hidden');
+  const delay = Number.parseFloat(modalStyles.transitionDuration) * 1000;
+
+  appModalRef.classList.remove('app-modal__overlay--is-visible');
 
   appModalRef.removeEventListener('click', onClickOverlay);
   closeBtnRef.removeEventListener('click', closeModal);
@@ -28,8 +33,9 @@ const closeModal = event => {
   state.isOpenedModal = false;
 
   setTimeout(() => {
+    appModalRef.classList.remove('app-modal__overlay--animation');
     modalContentRef.innerHTML = '';
-  }, 100);
+  }, delay);
 };
 
 const onClickOverlay = event => {

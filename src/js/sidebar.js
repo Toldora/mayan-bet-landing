@@ -58,6 +58,7 @@ const handleResize = () => {
 
   if (state.isDesktop !== isDesktop) {
     closeSidebar();
+    burgerBtnRef.classList.remove('app-navbar__burger-btn--is-open');
   }
 
   state.isDesktop = isDesktop;
