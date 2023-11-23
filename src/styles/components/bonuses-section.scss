@@ -5,7 +5,6 @@
 }
 
 .bonuses-section {
-  @extend %hidden-block;
   white-space: nowrap;
 
   @media (orientation: portrait) {
@@ -22,11 +21,6 @@
     z-index: var(--z-default);
     top: 0;
     left: var(--container-side-padding);
-  }
-
-  &--visible {
-    visibility: visible;
-    opacity: 1;
   }
 }
 
@@ -90,6 +84,15 @@
 
   &:not(:last-child) {
     margin-right: to-rem(30);
+  }
+
+  &--first {
+    @extend %hidden-block;
+
+    .bonuses-section--visible-first-bonus & {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &--second {

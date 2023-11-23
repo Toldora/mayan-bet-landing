@@ -32,7 +32,8 @@ const onClickWheel = () => {
         wheelRef.classList.add('wheel--stage-2');
         wheelRef.classList.remove('wheel--stage-1');
         wheelRef.classList.remove('wheel--spinning-1');
-        bonusesSectionRef.classList.add('bonuses-section--visible');
+        bonusesSectionRef.classList.add('bonuses-section--visible-first-bonus');
+        bonusTriesRef.textContent = '1';
 
         break;
 
