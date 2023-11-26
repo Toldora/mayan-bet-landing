@@ -1,6 +1,6 @@
 import handlebars from 'handlebars';
 import { openModal } from '@/js/modal';
-import template from '@/partials/sign-up-modal.html?raw';
+import template from '@/partials/sign-up-form.html?raw';
 
 const markup = handlebars.compile(template)();
 

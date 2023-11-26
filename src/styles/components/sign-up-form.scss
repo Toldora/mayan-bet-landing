@@ -1,13 +1,13 @@
-.sign-up-modal__form {
+.sign-up-form__form {
   width: 100%;
   margin: 0 auto;
 }
 
-.sign-up-modal__form-fieldset {
+.sign-up-form__form-fieldset {
   display: contents;
 }
 
-.sign-up-modal__title {
+.sign-up-form__title {
   margin-top: 0;
   margin-bottom: to-rem(30);
   font-size: to-rem(28);
@@ -19,12 +19,12 @@
   }
 }
 
-.sign-up-modal__email-label::after {
+.sign-up-form__email-label::after {
   content: '*';
 }
 
-.sign-up-modal__email-input,
-.sign-up-modal__input-stub {
+.sign-up-form__email-input,
+.sign-up-form__input-stub {
   width: 100%;
   height: auto;
   min-height: to-rem(40);
@@ -44,18 +44,18 @@
   }
 }
 
-.sign-up-modal__email-error {
+.sign-up-form__email-error {
   display: none;
   margin-top: to-rem(8);
   color: var(--col-vermilion-cinnabar);
   font-size: 0.8em;
 }
 
-.sign-up-modal__email-error--visible {
+.sign-up-form__email-error--visible {
   display: block;
 }
 
-.sign-up-modal__country-wrapper {
+.sign-up-form__country-wrapper {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: to-rem(16);
@@ -66,18 +66,18 @@
   }
 }
 
-.sign-up-modal__country-img {
+.sign-up-form__country-img {
   margin-right: to-rem(8);
 }
 
-.sign-up-modal__agree-wrapper {
+.sign-up-form__agree-wrapper {
   display: flex;
   align-items: center;
   padding-left: to-rem(28);
   cursor: pointer;
 }
 
-.sign-up-modal__check-input {
+.sign-up-form__check-input {
   width: auto;
   position: absolute;
   -webkit-appearance: none;
@@ -85,7 +85,7 @@
   appearance: none;
 }
 
-.sign-up-modal__check-box {
+.sign-up-form__check-box {
   position: absolute;
   margin-left: -#{to-rem(28)};
   width: to-rem(20);
@@ -94,15 +94,15 @@
   background-size: to-rem(20);
 }
 
-.sign-up-modal__check-input:checked + .sign-up-modal__check-box {
+.sign-up-form__check-input:checked + .sign-up-form__check-box {
   background-image: url('/img/checkbox-checked.png');
 }
 
-.sign-up-modal__check-input:focus-visible + .sign-up-modal__check-box {
+.sign-up-form__check-input:focus-visible + .sign-up-form__check-box {
   outline: -webkit-focus-ring-color auto to-rem(1);
 }
 
-.sign-up-modal__divider {
+.sign-up-form__divider {
   width: 100%;
   height: to-rem(1);
   margin: to-rem(20) 0;
@@ -113,12 +113,12 @@
   }
 }
 
-.sign-up-modal__submit-btn {
+.sign-up-form__submit-btn {
   width: 100%;
   border-radius: to-rem(12);
 
   @include respond-above(medium) {
-    &.sign-up-modal__submit-btn {
+    &.sign-up-form__submit-btn {
       font-size: to-rem(14);
     }
   }
