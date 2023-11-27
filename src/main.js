@@ -1,5 +1,6 @@
 import '@/styles/index.scss';
 
+import 'virtual:svg-icons-register';
 import '@/plugins';
 
 import '@/js/global-state';
@@ -9,7 +10,6 @@ import '@/js/sign-up';
 import '@/js/sidebar';
 import '@/js/terms-and-privacy';
 import { openSignUpModal } from '@/js/sign-up';
-
 import useViewportSizes from '@/js/use-viewport-sizes';
 
 const signUpBtnRef = document.querySelector('.js-sign-up-btn');

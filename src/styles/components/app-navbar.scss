@@ -27,12 +27,12 @@
     display: none;
 
     @include respond-above(tablet) {
-      display: inline-block;
+      display: inline-flex;
     }
   }
 
   &--small {
-    display: inline-block;
+    display: inline-flex;
     margin-right: to-rem(15);
 
     @include respond-above(tablet) {
