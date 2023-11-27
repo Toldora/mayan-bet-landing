@@ -168,6 +168,16 @@
     @include bg-image('/img/wheel/wheel-btn-hover');
     transition: opacity var(--hover-transition),
       transform var(--hover-transition);
+
+    @media all and (hover: none) {
+      opacity: 1;
+      transform: scale(1.25);
+
+      .wheel-stage-3 & {
+        opacity: 0;
+        transform: scale(1);
+      }
+    }
   }
 }
 
