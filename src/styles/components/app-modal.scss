@@ -72,7 +72,7 @@
   @include respond-above(small) {
     top: to-rem(22);
     right: to-rem(22);
-    color: #72787e;
+    color: var(--col-bilberry);
     transition: color var(--hover-transition);
 
     @include hover {
