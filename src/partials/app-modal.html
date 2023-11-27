@@ -1,11 +1,35 @@
-<div class="app-modal__overlay app-modal__overlay--hidden js-app-modal">
+<div class="app-modal__overlay js-app-modal">
   <div class="app-modal__modal">
     <button
       class="app-modal__close-btn js-close-modal-btn"
       type="button"
       aria-label="Close modal"
     >
-      <img src="/img/close-modal.png" width="20" height="20" alt="" />
+      <svg
+        class="app-modal__close-btn-icon app-modal__close-btn-icon--small"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewbox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          d="M6.663 10.39l4.545 4.45a.56.56 0 0 0 .395.16.56.56 0 0 0 .395-.16l.335-.328a.54.54 0 0 0 0-.774l-3.816-3.737 3.821-3.741c.105-.103.163-.24.163-.387a.54.54 0 0 0-.163-.387l-.335-.328a.56.56 0 0 0-.395-.16.56.56 0 0 0-.395.16L6.663 9.614a.54.54 0 0 0-.163.388.54.54 0 0 0 .163.388z"
+        />
+      </svg>
+      <svg
+        class="app-modal__close-btn-icon app-modal__close-btn-icon--large"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewbox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.2 4.2c.267-.267.7-.267.967 0L10 9.033 14.833 4.2c.267-.267.7-.267.967 0s.267.7 0 .967L10.967 10l4.833 4.833c.267.267.267.7 0 .967s-.7.267-.967 0L10 10.967 5.167 15.8c-.267.267-.7.267-.967 0s-.267-.7 0-.967L9.033 10 4.2 5.167c-.267-.267-.267-.7 0-.967z"
+        />
+      </svg>
     </button>
     <div class="app-modal__content js-app-modal-content"></div>
   </div>

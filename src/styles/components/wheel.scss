@@ -18,10 +18,10 @@
   background-size: 100% 100%;
   background-position: center;
 
-  @include bg-img-webp($path);
+  @include bg-img-webp($path, true);
 
   @include high-resolution-screen {
-    @include bg-img-webp('#{$path}@2x');
+    @include bg-img-webp('#{$path}@2x', true);
   }
 }
 
@@ -66,13 +66,22 @@
   }
 
   @include hover {
-    &:not(.wheel--stage-3) {
-      cursor: pointer;
+    cursor: pointer;
+
+    .wheel__btn {
+      &::after {
+        opacity: 1;
+        transform: scale(1.25);
+      }
+    }
+
+    .wheel-stage-3 & {
+      cursor: default;
 
       .wheel__btn {
         &::after {
-          opacity: 1;
-          transform: scale(1.25);
+          opacity: 0;
+          transform: scale(1);
         }
       }
     }
@@ -86,16 +95,14 @@
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 
-  .wheel--stage-1 & {
+  .wheel-stage-1 &,
+  .wheel-stage-2 & {
     animation-name: wheel-shake-1;
   }
 
-  .wheel--stage-2 & {
-    animation-name: wheel-shake-1;
-  }
-
-  .wheel--stage-3 & {
-    animation-name: wheel-shake-2;
+  .wheel-stage-3 & {
+    // animation-name: wheel-shake-2;
+    transform: translate(-50%, -50%) rotate(-180deg);
   }
 
   .wheel--spinning-1 & {
@@ -224,6 +231,6 @@
   }
 
   100% {
-    transform: translate(-50%, -50%) rotate(2344deg);
+    transform: translate(-50%, -50%) rotate(2340deg);
   }
 }

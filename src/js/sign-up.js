@@ -1,14 +1,16 @@
 import handlebars from 'handlebars';
 import { openModal } from '@/js/modal';
-import template from '@/partials/sign-up-form.html?raw';
-
-const markup = handlebars.compile(template)();
+import template from '@/partials/sign-up-form.hbs?raw';
+import { AUTH_FIELD } from '@/const';
+import { globalState } from '@/js/global-state';
 
 const signUpBtnRef = document.querySelector('.js-sign-up-btn');
 const modalContentRef = document.querySelector('.js-app-modal-content');
+let formRef = null;
 
 const state = {
   isValid: false,
+  isTelAuthType: true,
   isSubmitLoading: false,
 };
 
@@ -27,6 +29,31 @@ const validate = () => {
   }
 };
 
+function onChangeAuthType() {
+  const isTel = this.value === AUTH_FIELD.tel;
+
+  state.isTelAuthType = isTel;
+
+  if (isTel) {
+    formRef.classList.remove('sign-up-form__form--auth-with-email');
+    formRef.classList.add('sign-up-form__form--auth-with-tel');
+
+    formRef[AUTH_FIELD.tel].required = true;
+    [formRef[AUTH_FIELD.email], formRef[AUTH_FIELD.password]].forEach(ref => {
+      ref.required = false;
+    });
+  } else {
+    formRef.classList.remove('sign-up-form__form--auth-with-tel');
+    formRef.classList.add('sign-up-form__form--auth-with-email');
+    formRef[AUTH_FIELD.tel].required = false;
+    [formRef[AUTH_FIELD.email], formRef[AUTH_FIELD.password]].forEach(ref => {
+      ref.required = true;
+    });
+  }
+
+  validate();
+}
+
 const onInput = () => {
   validate();
 };
@@ -40,6 +67,8 @@ const onSubmit = async event => {
 
   try {
     if (!state.isValid || state.isSubmitLoading) return;
+
+    console.log('SUBMIT');
 
     state.isSubmitLoading = true;
     formRef.fieldset.disabled = true;
@@ -82,13 +111,26 @@ const onSubmit = async event => {
 };
 
 const onOpenModal = () => {
+  const markup = handlebars.compile(template)({
+    wheelStage: globalState.wheelStage,
+  });
+
   modalContentRef.insertAdjacentHTML('beforeend', markup);
 
-  //   const formRef = document.forms.signUp;
+  formRef = document.forms.signUp;
 
-  //   formRef.email.addEventListener('input', onInput);
-  //   formRef.agreeCheck.addEventListener('change', onChangeCheckbox);
-  //   formRef.addEventListener('submit', onSubmit);
+  [...formRef[AUTH_FIELD.authType]].forEach(radioRef => {
+    radioRef.addEventListener('change', onChangeAuthType);
+  });
+  [
+    formRef[AUTH_FIELD.tel],
+    formRef[AUTH_FIELD.email],
+    formRef[AUTH_FIELD.password],
+  ].forEach(ref => {
+    ref.addEventListener('input', onInput);
+  });
+  formRef.agreeCheck.addEventListener('change', onChangeCheckbox);
+  formRef.addEventListener('submit', onSubmit);
 
   openModal();
 };
