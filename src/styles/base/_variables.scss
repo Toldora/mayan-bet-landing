@@ -94,9 +94,7 @@
   // App overlay
   --app-overlay-bg: rgba(#{$col-total-black-rgb}, 88%);
 
-  // Sign up form
-  --sign-up-form-radio-bg: var(--col-gordons-green);
-  --sign-up-form-radio-bg-hover: rgba(#{$col-total-white-rgb}, 15%);
-  --sign-up-form-radio-bg-checked: rgba(#{$col-total-white-rgb}, 35%);
-  --sign-up-form-radio-icon-bg-checked: rgba(#{$col-total-white-rgb}, 35%);
+  // Auth type radio
+  --auth-type-radio-bg-hover: rgba(#{$col-total-white-rgb}, 15%);
+  --auth-type-radio-bg-checked: rgba(#{$col-total-white-rgb}, 35%);
 }

@@ -1,32 +1,16 @@
 import handlebars from 'handlebars';
-import template from '@/partials/sign-up-form.hbs?raw';
 import { openModal } from '@/js/modal';
-import { openLoginModal } from '@/js//login';
-import { globalState } from '@/js/global-state';
+import { openSignUpModal } from '@/js/sign-up';
+import template from '@/partials/login-form.html?raw';
 import { AUTH_FIELD } from '@/const';
 
+const signUpBtnRef = document.querySelector('.js-sign-up-btn');
 const modalContentRef = document.querySelector('.js-app-modal-content');
 let formRef = null;
 
 const state = {
-  isValid: false,
   isTelAuthType: true,
   isSubmitLoading: false,
-};
-
-const validate = () => {
-  const { email, submitBtn, agreeCheck } = formRef;
-  if (!email || !agreeCheck || !submitBtn) return;
-
-  const isValid = email.validity.valid && agreeCheck.checked;
-
-  state.isValid = isValid;
-
-  if (isValid) {
-    submitBtn.classList.remove('app-button--disabled');
-  } else {
-    submitBtn.classList.add('app-button--disabled');
-  }
 };
 
 function onChangeAuthType() {
@@ -35,38 +19,19 @@ function onChangeAuthType() {
   state.isTelAuthType = isTel;
 
   if (isTel) {
-    formRef.classList.remove('sign-up-form__form--auth-with-email');
-    formRef.classList.add('sign-up-form__form--auth-with-tel');
-
-    formRef[AUTH_FIELD.tel].required = true;
-    [formRef[AUTH_FIELD.email], formRef[AUTH_FIELD.password]].forEach(ref => {
-      ref.required = false;
-    });
+    formRef.classList.remove('login-form__form--auth-with-email');
+    formRef.classList.add('login-form__form--auth-with-tel');
   } else {
-    formRef.classList.remove('sign-up-form__form--auth-with-tel');
-    formRef.classList.add('sign-up-form__form--auth-with-email');
-    formRef[AUTH_FIELD.tel].required = false;
-    [formRef[AUTH_FIELD.email], formRef[AUTH_FIELD.password]].forEach(ref => {
-      ref.required = true;
-    });
+    formRef.classList.remove('login-form__form--auth-with-tel');
+    formRef.classList.add('login-form__form--auth-with-email');
   }
-
-  validate();
 }
-
-const onInput = () => {
-  validate();
-};
-
-const onChangeCheckbox = () => {
-  validate();
-};
 
 const onSubmit = async event => {
   event.preventDefault();
 
   try {
-    if (!state.isValid || state.isSubmitLoading) return;
+    if (state.isSubmitLoading) return;
 
     console.log('SUBMIT');
 
@@ -110,31 +75,21 @@ const onSubmit = async event => {
   }
 };
 
-export const openSignUpModal = () => {
-  const markup = handlebars.compile(template)({
-    wheelStage: globalState.wheelStage,
-  });
+export const openLoginModal = () => {
+  const markup = handlebars.compile(template)();
 
   modalContentRef.innerHTML = '';
   modalContentRef.insertAdjacentHTML('beforeend', markup);
 
-  formRef = document.forms.signUp;
+  formRef = document.forms.login;
 
   [...formRef[AUTH_FIELD.authType]].forEach(radioRef => {
     radioRef.addEventListener('change', onChangeAuthType);
   });
-  [
-    formRef[AUTH_FIELD.tel],
-    formRef[AUTH_FIELD.email],
-    formRef[AUTH_FIELD.password],
-  ].forEach(ref => {
-    ref.addEventListener('input', onInput);
-  });
-  formRef.agreeCheck.addEventListener('change', onChangeCheckbox);
   formRef.addEventListener('submit', onSubmit);
 
-  const loginBtnRef = formRef.querySelector('.js-switch-to-login-btn');
-  loginBtnRef.addEventListener('click', openLoginModal);
+  const signUpBtnRef = formRef.querySelector('.js-switch-to-sign-up-btn');
+  signUpBtnRef.addEventListener('click', openSignUpModal);
 
   openModal();
 };
