@@ -4,7 +4,6 @@ import { openSignUpModal } from '@/js/sign-up';
 import template from '@/partials/login-form.html?raw';
 import { AUTH_FIELD } from '@/const';
 
-const signUpBtnRef = document.querySelector('.js-sign-up-btn');
 const modalContentRef = document.querySelector('.js-app-modal-content');
 let formRef = null;
 
@@ -75,7 +74,7 @@ const onSubmit = async event => {
   }
 };
 
-export const openLoginModal = () => {
+export const openLoginModal = ({ isBlocked } = {}) => {
   const markup = handlebars.compile(template)();
 
   modalContentRef.innerHTML = '';
@@ -89,7 +88,7 @@ export const openLoginModal = () => {
   formRef.addEventListener('submit', onSubmit);
 
   const signUpBtnRef = formRef.querySelector('.js-switch-to-sign-up-btn');
-  signUpBtnRef.addEventListener('click', openSignUpModal);
+  signUpBtnRef.addEventListener('click', () => openSignUpModal({ isBlocked }));
 
-  openModal();
+  openModal({ isBlocked });
 };

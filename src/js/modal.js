@@ -8,14 +8,16 @@ const state = {
   isOpenedModal: false,
 };
 
-export const openModal = () => {
+export const openModal = ({ isBlocked } = {}) => {
   appModalRef.classList.add(
     'app-modal__overlay--animation',
     'app-modal__overlay--is-visible',
   );
 
-  appModalRef.addEventListener('click', onClickOverlay);
-  closeBtnRef.addEventListener('click', closeModal);
+  if (!isBlocked) {
+    appModalRef.addEventListener('click', onClickOverlay);
+    closeBtnRef.addEventListener('click', closeModal);
+  }
 
   state.isOpenedModal = true;
 };

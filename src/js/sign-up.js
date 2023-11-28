@@ -110,7 +110,7 @@ const onSubmit = async event => {
   }
 };
 
-export const openSignUpModal = () => {
+export const openSignUpModal = ({ isBlocked } = {}) => {
   const markup = handlebars.compile(template)({
     wheelStage: globalState.wheelStage,
   });
@@ -134,7 +134,7 @@ export const openSignUpModal = () => {
   formRef.addEventListener('submit', onSubmit);
 
   const loginBtnRef = formRef.querySelector('.js-switch-to-login-btn');
-  loginBtnRef.addEventListener('click', openLoginModal);
+  loginBtnRef.addEventListener('click', () => openLoginModal({ isBlocked }));
 
-  openModal();
+  openModal({ isBlocked });
 };
