@@ -14,7 +14,9 @@
   text-align: center;
 
   @include respond-to(small) {
-    padding-left: var(--close-modal-btn-size-small, 0);
+    body:not(.wheel-stage-3) & {
+      padding-left: var(--close-modal-btn-size-small, 0);
+    }
   }
 }
 
@@ -43,6 +45,45 @@
   }
 }
 
+.login-form__text-input-wrapper {
+  --hide-pass-btn-width: #{to-rem(40)};
+
+  position: relative;
+}
+
+.login-form__password-input-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: var(--hide-pass-btn-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #{rgba(var(--col-total-white-rgb), 50%)};
+  transition: color var(--hover-transition);
+
+  @include hover {
+    color: var(--col-total-white);
+  }
+}
+
+.login-form__password-btn-icon {
+  display: none;
+
+  &--off {
+    .login-form__password-input-btn--pass-hidden & {
+      display: inline-flex;
+    }
+  }
+
+  &--on {
+    button:not(.login-form__password-input-btn--pass-hidden) & {
+      display: inline-flex;
+    }
+  }
+}
+
 .login-form__text-input {
   width: 100%;
   height: auto;
@@ -50,7 +91,8 @@
   display: flex;
   align-items: center;
   margin-top: to-rem(8);
-  padding: to-rem(10) to-rem(16);
+  padding: to-rem(10) calc(to-rem(16) + var(--hide-pass-btn-width, to-rem(0)))
+    to-rem(10) to-rem(16);
   background-color: var(--col-gordons-green);
   border: none;
   border-radius: to-rem(12);

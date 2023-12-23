@@ -16,7 +16,7 @@
         <p>Você ganhou
           <span class='sign-up-form__accent-text'>250 Giros Gratis</span></p>
         {{#isGreaterOrEqual wheelStage 3}}
-          <p>e bônus <span class='sign-up-form__accent-text'>1500 R$</span></p>
+          <p>e bônus <span class='sign-up-form__accent-text'>4000 R$</span></p>
         {{/isGreaterOrEqual}}
       </div>
     {{/isGreaterOrEqual}}
@@ -96,14 +96,34 @@
       </label>
       <label>
         <div class='sign-up-form__text-input-label'>Senha</div>
-        <input
-          class='sign-up-form__text-input'
-          name='password'
-          placeholder='******'
-          type='password'
-          minlength='6'
-          autocomplete='off'
-        />
+        <div class='sign-up-form__text-input-wrapper'>
+          <input
+            class='sign-up-form__text-input'
+            name='password'
+            placeholder='******'
+            type='password'
+            minlength='6'
+            autocomplete='off'
+          />
+          <button
+            class='sign-up-form__password-input-btn sign-up-form__password-input-btn--pass-hidden js-password-input-btn'
+            type='button'
+            aria-label='Clique aqui para mostrar/ocultar senha'
+          >
+            {{> svg-icon
+              class='sign-up-form__password-btn-icon sign-up-form__password-btn-icon--off'
+              width='20'
+              height='20'
+              name='eye-off'
+            }}
+            {{> svg-icon
+              class='sign-up-form__password-btn-icon sign-up-form__password-btn-icon--on'
+              width='20'
+              height='20'
+              name='eye-on'
+            }}
+          </button>
+        </div>
       </label>
     </div>
     <div class='sign-up-form__email-error js-email-error'></div>
@@ -112,7 +132,7 @@
         <span>País</span>
         <div class='sign-up-form__input-stub'>
           {{> svg-icon class='sign-up-form__country-img' width="24" height="20" name='brazil-flag' }}
-         
+
           <span>Brasil</span>
         </div>
       </div>
@@ -152,10 +172,13 @@
       {{/ifEquals}}
     </button>
 
-
     <p class='sign-up-form__login-text'>
       <span>Já é um membro? </span>
-      <button class='sign-up-form__login-btn js-switch-to-login-btn' type='button'>
+      <button
+        class='sign-up-form__login-btn js-switch-to-login-btn'
+        type='button'
+        aria-label='Vá para login'
+      >
         Entrar
       </button>
     </p>
