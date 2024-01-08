@@ -105,15 +105,15 @@
   }
 }
 
-.login-form__email-error {
+.login-form__auth-error {
   display: none;
   margin-top: to-rem(8);
   color: var(--col-vermilion-cinnabar);
   font-size: 0.8em;
-}
 
-.login-form__email-error--visible {
-  display: block;
+  &.visible {
+    display: block;
+  }
 }
 
 .login-form__divider {
