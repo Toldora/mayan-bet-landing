@@ -25,3 +25,11 @@ const isLastStage = getFromLS('isLastStage');
 // }
 
 signUpBtnRef.addEventListener('click', openSignUpModal);
+// const token =
+//   'ZDE0ZTJjOTcxZTBkYTI0MzhjYmY5YjMxOTU0Y2E4MDRlOTE1OTdiYTE5Y2QxNGVhY2UxMjg4Zjk1ZTFmOGQ2OA';
+
+// const currentQuery = window.location.search;
+// const redirectQuery = currentQuery
+//   ? `${currentQuery}&state=${token}`
+//   : `?state=${token}`;
+// window.location.replace(`https://mayan.bet/auth/autologin${redirectQuery}`);

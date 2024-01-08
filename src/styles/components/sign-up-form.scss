@@ -53,15 +53,6 @@
 .sign-up-form__auth-inputs {
   display: none;
 
-  label {
-    display: inline-block;
-    width: 100%;
-
-    &:not(:last-child) {
-      margin-bottom: to-rem(16);
-    }
-  }
-
   .sign-up-form__form--auth-with-tel &--tel {
     display: contents;
   }
@@ -69,6 +60,15 @@
   .sign-up-form__form--auth-with-email &--email {
     display: contents;
   }
+}
+
+.sign-up-form__input-label {
+  display: inline-block;
+  width: 100%;
+}
+
+.sign-up-form__text-input-label {
+  margin-top: to-rem(16);
 }
 
 .sign-up-form__text-input-label::after {
@@ -136,15 +136,15 @@
   }
 }
 
-.sign-up-form__email-error {
+.sign-up-form__auth-error {
   display: none;
   margin-top: to-rem(8);
   color: var(--col-vermilion-cinnabar);
-  font-size: 0.8em;
-}
+  font-size: 0.9em;
 
-.sign-up-form__email-error--visible {
-  display: block;
+  &.visible {
+    display: block;
+  }
 }
 
 .sign-up-form__country-wrapper {
@@ -208,12 +208,15 @@
 
 .sign-up-form__submit-btn {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: to-rem(12);
-  margin-bottom: to-rem(20);
+  // margin-bottom: to-rem(20);
 
-  @include respond-above(small) {
-    margin-bottom: to-rem(16);
-  }
+  // @include respond-above(small) {
+  //   margin-bottom: to-rem(16);
+  // }
 
   @include respond-above(medium) {
     &.sign-up-form__submit-btn {
@@ -222,34 +225,73 @@
   }
 }
 
-.sign-up-form__login-text {
-  font-size: to-rem(12);
-  font-weight: 500;
-  text-align: center;
+.sign-up-form__submit-btn-content {
+  .sign-up-form__submit-btn.loading & {
+    display: none;
+  }
 }
 
-.sign-up-form__login-btn {
-  position: relative;
-  color: var(--col-tibetan-yellow);
-  font-family: var(--secondary-font-family);
-  font-size: to-rem(12);
-  font-weight: 500;
+.sign-up-form__submit-loader {
+  display: none;
 
-  &:after {
-    position: absolute;
-    right: 0;
-    bottom: -#{to-rem(1)};
-    width: 0;
-    height: to-rem(1);
-    background-color: currentColor;
-    content: '';
-    transition: width var(--slide-transition);
+  .sign-up-form__submit-btn.loading & {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+    grid-gap: to-rem(10);
+  }
+}
+
+.sign-up-form__submit-loader-icon {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  animation: spin 0.6s ease-in-out infinite;
+
+  &--second {
+    color: rgba(var(--col-total-black-rgb), 50%);
+    animation-delay: 0.2s;
+    animation-direction: reverse;
+  }
+}
+
+// .sign-up-form__login-text {
+//   font-size: to-rem(12);
+//   font-weight: 500;
+//   text-align: center;
+// }
+
+// .sign-up-form__login-btn {
+//   position: relative;
+//   color: var(--col-tibetan-yellow);
+//   font-family: var(--secondary-font-family);
+//   font-size: to-rem(12);
+//   font-weight: 500;
+
+//   &:after {
+//     position: absolute;
+//     right: 0;
+//     bottom: -#{to-rem(1)};
+//     width: 0;
+//     height: to-rem(1);
+//     background-color: currentColor;
+//     content: '';
+//     transition: width var(--slide-transition);
+//   }
+
+//   @include hover {
+//     &:after {
+//       left: 0;
+//       width: 100%;
+//     }
+//   }
+// }
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
   }
 
-  @include hover {
-    &:after {
-      left: 0;
-      width: 100%;
-    }
+  to {
+    transform: rotate(360deg);
   }
 }

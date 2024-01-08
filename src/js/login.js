@@ -41,7 +41,25 @@ const onSubmit = async event => {
 
     formRef.style.minHeight = `${formRef.clientHeight}px`;
 
-    const body = JSON.stringify({});
+    const body = JSON.stringify({
+      login: 'qwe@qwe.com',
+      password: 'qweqwe',
+    });
+
+    const response = await fetch('https://mayan.bet/api/player/sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body,
+    });
+    const { data } = await response.json();
+    debugger;
+
+    // const currentQuery = window.location.search;
+    // const redirectQuery = currentQuery
+    //   ? `${currentQuery}&state=${data.profile.autologinToken}`
+    //   : `?state=${data.profile.autologinToken}`;
 
     // const response = await fetch(
     //   'https://idyllic-eclair-f22d90.netlify.app/api/sign-up',
@@ -58,9 +76,9 @@ const onSubmit = async event => {
     //   formRef.innerHTML = `<h2 class="sign-up__title">Junte-se a nós</h2>
     //   <div>Sucesso! Entraremos em contato em breve.</div>`;
     // } else {
-    //   const errorRef = formRef.querySelector('.js-email-error');
+    //   const errorRef = formRef.querySelector('.js-auth-error');
     //   errorRef.textContent = data.messagePt || data.message;
-    //   errorRef.classList.add('sign-up__email-error--visible');
+    //   errorRef.classList.add('sign-up__auth-error--visible');
     // }
   } catch (error) {
     formRef.innerHTML = JSON.stringify(error, null, 2);
