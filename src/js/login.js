@@ -54,7 +54,6 @@ const onSubmit = async event => {
       body,
     });
     const { data } = await response.json();
-    debugger;
 
     // const currentQuery = window.location.search;
     // const redirectQuery = currentQuery
