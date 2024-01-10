@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #{rgba(var(--col-total-white-rgb), 50%)};
+  color: rgba(var(--col-total-white-rgb), 50%);
   transition: color var(--hover-transition);
 
   @include hover {
@@ -120,7 +120,7 @@
   width: 100%;
   height: to-rem(1);
   margin: to-rem(20) 0;
-  background-color: #697a6d;
+  background-color: var(--col-island-palm);
 
   @include respond-above(small) {
     margin: to-rem(16) 0;
@@ -156,7 +156,7 @@
   font-size: to-rem(12);
   font-weight: 500;
 
-  &:after {
+  &::after {
     position: absolute;
     right: 0;
     bottom: -#{to-rem(1)};
@@ -168,7 +168,7 @@
   }
 
   @include hover {
-    &:after {
+    &::after {
       left: 0;
       width: 100%;
     }

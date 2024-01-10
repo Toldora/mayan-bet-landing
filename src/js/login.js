@@ -33,6 +33,7 @@ const onSubmit = async event => {
   try {
     if (state.isSubmitLoading) return;
 
+    // eslint-disable-next-line no-console
     console.log('SUBMIT');
 
     state.isSubmitLoading = true;
@@ -53,6 +54,7 @@ const onSubmit = async event => {
       },
       body,
     });
+    // eslint-disable-next-line no-unused-vars
     const { data } = await response.json();
 
     // const currentQuery = window.location.search;

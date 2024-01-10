@@ -106,13 +106,13 @@
   }
 
   .wheel--spinning-1 & {
-    animation-name: spinToStageTwo;
+    animation-name: spin-to-stage-two;
     animation-duration: 4s;
     animation-iteration-count: 1;
   }
 
   .wheel--spinning-2 & {
-    animation-name: spinToStageThree;
+    animation-name: spin-to-stage-three;
     animation-duration: 4s;
     animation-iteration-count: 1;
     transform: rotate(-25deg);
@@ -163,9 +163,11 @@
     left: 0;
 
     @extend %full-width;
+
     opacity: 0;
 
     @include bg-image('/img/wheel/wheel-btn-hover');
+
     transition: opacity var(--hover-transition),
       transform var(--hover-transition);
 
@@ -209,7 +211,7 @@
   }
 }
 
-@keyframes spinToStageTwo {
+@keyframes spin-to-stage-two {
   0% {
     transform: translate(-50%, -50%) rotate(4deg);
   }
@@ -227,7 +229,7 @@
   }
 }
 
-@keyframes spinToStageThree {
+@keyframes spin-to-stage-three {
   0% {
     transform: translate(-50%, -50%) rotate(1084deg);
   }
