@@ -56,7 +56,10 @@ const onClickWheel = () => {
         globalState.wheelStage += 1;
 
         setToLS('isLastStage', globalState.isLastStage);
-        openSignUpModal({ isBlocked: true });
+
+        setTimeout(() => {
+          openSignUpModal({ isBlocked: true });
+        }, 500);
 
         break;
 
@@ -70,7 +73,7 @@ const onClickWheel = () => {
 
 export const setWheelLastStage = () => {
   bodyRef.classList.add('wheel-stage-3');
-  bodyRef.classList.remove('wheel-stage-1');
+  bodyRef.classList.remove('wheel-stage-1', 'wheel-stage-2');
   bonusesSectionRef.classList.add(
     'bonuses-section--visible-first-bonus',
     'bonuses-section--visible-second-bonus',
