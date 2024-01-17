@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "email.mayanbet.info"
-  to = "track.customer.io"
+  from = "/*"
+  to = "index.html"
   status = 200
