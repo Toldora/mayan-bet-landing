@@ -94,63 +94,63 @@
   }
 }
 
-.app-navbar__burger-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: to-rem(40);
-  height: to-rem(40);
-  margin-left: to-rem(15);
-  padding: to-rem(10);
-  background-color: var(--app-navbar-burger-btn-bg);
-  border-radius: to-rem(4);
+// .app-navbar__burger-btn {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: to-rem(40);
+//   height: to-rem(40);
+//   margin-left: to-rem(15);
+//   padding: to-rem(10);
+//   background-color: var(--app-navbar-burger-btn-bg);
+//   border-radius: to-rem(4);
 
-  @include respond-above(tablet) {
-    display: none;
-  }
-}
+//   @include respond-above(tablet) {
+//     display: none;
+//   }
+// }
 
-.app-navbar__burger-btn-content {
-  display: inline-block;
-  width: 100%;
-  position: relative;
-}
+// .app-navbar__burger-btn-content {
+//   display: inline-block;
+//   width: 100%;
+//   position: relative;
+// }
 
-.app-navbar__burger-btn-block {
-  &,
-  &::before,
-  &::after {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: to-rem(2);
-    border-radius: to-rem(4);
-    background-color: var(--col-tibetan-yellow);
-    transition: top var(--hover-transition), transform var(--hover-transition);
-  }
+// .app-navbar__burger-btn-block {
+//   &,
+//   &::before,
+//   &::after {
+//     position: absolute;
+//     left: 0;
+//     width: 100%;
+//     height: to-rem(2);
+//     border-radius: to-rem(4);
+//     background-color: var(--col-tibetan-yellow);
+//     transition: top var(--hover-transition), transform var(--hover-transition);
+//   }
 
-  &::before {
-    top: -#{to-rem(6)};
-    content: '';
-  }
+//   &::before {
+//     top: -#{to-rem(6)};
+//     content: '';
+//   }
 
-  &::after {
-    top: #{to-rem(6)};
-    content: '';
-  }
+//   &::after {
+//     top: #{to-rem(6)};
+//     content: '';
+//   }
 
-  .app-navbar__burger-btn--is-open & {
-    transform: rotate(45deg);
+//   .app-navbar__burger-btn--is-open & {
+//     transform: rotate(45deg);
 
-    &::before {
-      top: 0;
-      transform: rotate(0);
-    }
+//     &::before {
+//       top: 0;
+//       transform: rotate(0);
+//     }
 
-    &::after {
-      top: 0;
-      transform: rotate(90deg);
-    }
-  }
-}
+//     &::after {
+//       top: 0;
+//       transform: rotate(90deg);
+//     }
+//   }
+// }
