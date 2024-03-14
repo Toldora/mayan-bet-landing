@@ -12,6 +12,7 @@ import { openSignUpModal } from '@/js/sign-up';
 // import '@/js/terms-and-privacy';
 import useViewportSizes from '@/js/use-viewport-sizes';
 import { getFromLS } from '@/js/local-storage';
+import { initOneSignal } from '@/js/one-signal';
 
 const signUpBtnRef = document.querySelector('.js-sign-up-btn');
 
@@ -36,3 +37,5 @@ if (isLastStage) {
 }
 
 signUpBtnRef.addEventListener('click', openSignUpModal);
+
+initOneSignal();
