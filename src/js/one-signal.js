@@ -9,9 +9,12 @@ export const initOneSignal = () => {
       // appId: 'ea11d64e-aa3d-45aa-80e8-81e8a5226ded',
     });
 
-    //   console.log(OneSignal.User.PushSubscription.id);
-    //   console.log(OneSignal.User.PushSubscription.optedIn);
-    //     console.log(OneSignal.User.PushSubscription.token);
+    OneSignal.User.PushSubscription.addEventListener('change', event => {
+      OneSignal.User.addTag(
+        ONE_SIGNAL_TAG.registered,
+        event.current.optedIn && event.current.token ? '1' : '0',
+      );
+    });
 
     // Логин юзера, если его удалили из таблицы подписок
     //   OneSignal.User.PushSubscription.addEventListener(
@@ -22,16 +25,6 @@ export const initOneSignal = () => {
     //       }
     //     },
     //   );
-
-    OneSignal.Notifications.addEventListener('permissionChange', permission => {
-      if (permission) {
-        const tags = OneSignal.User.getTags();
-
-        if (tags[ONE_SIGNAL_TAG.registered]) return;
-
-        OneSignal.User.addTag(ONE_SIGNAL_TAG.registered, '1');
-      }
-    });
   });
 };
 
@@ -39,6 +32,19 @@ export const changeUserTag = (key, value) => {
   if (!window.OneSignal || !key || !value) return;
 
   window.OneSignal.User.addTag(key, value);
+};
+
+export const waitForTagsUpdate = () => {
+  return new Promise(resolve => {
+    const interval = setInterval(() => {
+      const tags = window.OneSignal.User.getTags();
+
+      if (tags[ONE_SIGNAL_TAG.registered] === '2') {
+        clearInterval(interval);
+        resolve();
+      }
+    }, 200);
+  });
 };
 
 export const getIsUserOptedIn = () => {
