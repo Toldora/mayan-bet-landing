@@ -3,12 +3,10 @@ import { ONE_SIGNAL_TAG } from '@/const/one-signal';
 export const initOneSignal = () => {
   window.OneSignalDeferred = window.OneSignalDeferred || [];
 
-  if (!window.OneSignalDeferred) return;
-
   window.OneSignalDeferred.push(OneSignal => {
     OneSignal.init({
       appId: '707e911a-7985-4fcb-8bb1-666951edf9ef',
-      // serviceWorkerPath: '/scripts/OneSignalSDKWorker.js',
+      // appId: 'ea11d64e-aa3d-45aa-80e8-81e8a5226ded',
     });
 
     //   console.log(OneSignal.User.PushSubscription.id);
@@ -27,6 +25,10 @@ export const initOneSignal = () => {
 
     OneSignal.Notifications.addEventListener('permissionChange', permission => {
       if (permission) {
+        const tags = OneSignal.User.getTags();
+
+        if (tags[ONE_SIGNAL_TAG.registered]) return;
+
         OneSignal.User.addTag(ONE_SIGNAL_TAG.registered, '1');
       }
     });
