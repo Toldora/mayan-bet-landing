@@ -5,8 +5,7 @@ export const initOneSignal = () => {
 
   window.OneSignalDeferred.push(OneSignal => {
     OneSignal.init({
-      appId: '707e911a-7985-4fcb-8bb1-666951edf9ef',
-      // appId: 'ea11d64e-aa3d-45aa-80e8-81e8a5226ded',
+      appId: import.meta.env.VITE_ONE_SIGNAL_APP_ID,
     });
 
     OneSignal.User.PushSubscription.addEventListener('change', event => {
@@ -28,23 +27,10 @@ export const initOneSignal = () => {
   });
 };
 
-export const changeUserTag = (key, value) => {
-  if (!window.OneSignal || !key || !value) return;
+export const getUserOnesignalId = () => {
+  if (!window.OneSignal) return;
 
-  window.OneSignal.User.addTag(key, value);
-};
-
-export const waitForTagsUpdate = () => {
-  return new Promise(resolve => {
-    const interval = setInterval(() => {
-      const tags = window.OneSignal.User.getTags();
-
-      if (tags[ONE_SIGNAL_TAG.registered] === '2') {
-        clearInterval(interval);
-        resolve();
-      }
-    }, 200);
-  });
+  return window.OneSignal.User.onesignalId;
 };
 
 export const getIsUserOptedIn = () => {
