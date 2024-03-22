@@ -11,8 +11,13 @@ import { generateId } from '@/js/generate-id';
 import { generatePassword } from '@/js/generate-password';
 import { sendMessage, validatePhone } from '@/api/wavix';
 import { getIsUserOptedIn, getUserOnesignalId } from '@/js/one-signal';
-import { AUTH_FIELD, ERROR_MESSAGES, ONE_SIGNAL_TAG } from '@/const';
 import { patchUser } from '@/api/one-signal';
+import {
+  AUTH_FIELD,
+  ERROR_MESSAGES_EN,
+  ERROR_MESSAGES_PT,
+  ONE_SIGNAL_TAG,
+} from '@/const';
 
 const modalContentRef = document.querySelector('.js-app-modal-content');
 let formRef = null;
@@ -111,12 +116,14 @@ const onSubmit = async event => {
 
     if (state.isTelAuthType) {
       const rawPhone = formRef[AUTH_FIELD.tel].value;
-      const phone = rawPhone.replace(/[^\d]/g, ''); // Remove all characters except numbers
+      const phone = `55${rawPhone}`;
+      // // Remove all characters except numbers
+      // const phone = rawPhone.replace(/[^\d]/g, '');
 
       const { valid } = await validatePhone(phone);
 
       if (!valid) {
-        throw new Error(ERROR_MESSAGES.invalidPhone);
+        throw new Error(ERROR_MESSAGES_PT.invalidPhone);
       }
 
       const password = generatePassword();
@@ -175,7 +182,7 @@ const onSubmit = async event => {
         errorMessages.push(Object.values(validationErrors).flat());
       }
     } else {
-      errorMessages.push(error.message);
+      errorMessages.push([error.message]);
     }
 
     if (!errorMessages.length) {
@@ -188,8 +195,14 @@ const onSubmit = async event => {
       return;
     }
 
+    const enMessageEntries = Object.entries(ERROR_MESSAGES_EN);
+    const translations = errorMessages.map(([message]) => {
+      const errorKey = enMessageEntries.find(([, value]) => message === value);
+      return errorKey?.[0] ? ERROR_MESSAGES_PT[errorKey[0]] : message;
+    });
+
     const errorRef = formRef.querySelector('.js-auth-error');
-    errorRef.innerHTML = errorMessages.join('<br/>');
+    errorRef.innerHTML = translations.join('<br/>');
     errorRef.classList.add('visible');
   } finally {
     state.isSubmitLoading = false;
